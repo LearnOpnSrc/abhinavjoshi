@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abhinav Joshi — ServiceNow Solutions Architect | AI & Automation</title>
+  <meta name="description" content="Abhinav Joshi — ServiceNow Solutions Architect (CTA) focused on ITOM/CMDB/CSDM, integrations, and AI-enabled automation. Austin, TX." />
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      /* Slate Gray & Green Theme (Option 7) */
+      --navy: #1e2d3d;          /* slate background */
+      --light-navy: #273c52;    /* slightly lighter panel */
+      --lightest-navy: #2d4a63; /* hover surface */
+      --slate: #94a3b8;         /* light slate text */
+      --light-slate: #cbd5e1;   /* mid emphasis text */
+      --lightest-slate: #e2e8f0;/* near-white for headings */
+      --green: #2dd4bf;         /* turquoise accent */
+      --green-alt: #10b981;     /* emerald accent alternative */
+      --muted: rgba(148, 163, 184, 0.08); /* subtle bg for cards */
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--navy);
+      color: var(--slate);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .spotlight {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+              rgba(45, 212, 191, 0.15),
+              transparent 80%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    body:hover .spotlight { opacity: 1; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 50px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      min-height: 100vh;
+    }
+
+    .left-side {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 90px 0;
+      z-index: 2;
+    }
+
+    .header-content {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--lightest-slate);
+      margin-bottom: 10px;
+      line-height: 1.1;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: var(--light-slate);
+      margin-bottom: 10px;
+    }
+
+    .meta-line {
+      font-size: 0.95rem;
+      color: var(--slate);
+      margin-bottom: 18px;
+    }
+    .meta-line a { 
+      color: var(--lightest-slate); 
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .meta-line a:hover { color: var(--green); }
+
+    .tagline {
+      font-size: 1rem;
+      color: var(--slate);
+      max-width: 420px;
+      margin-bottom: 22px;
+      line-height: 1.75;
+    }
+
+    .cert-strip {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin: 10px 0 26px 0;
+    }
+
+    .cert-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: var(--muted);
+      border: 1px solid rgba(45, 212, 191, 0.15);
+      transition: all 0.3s;
+    }
+
+    .cert-badge:hover {
+      border-color: var(--green);
+      background: rgba(45, 212, 191, 0.12);
+    }
+
+    .cert-badge .badge-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      line-height: 1.2;
+    }
+    .cert-badge .badge-text strong {
+      color: var(--lightest-slate);
+      font-size: 0.85rem;
+      letter-spacing: 0.02em;
+    }
+    .cert-badge .badge-text span {
+      color: var(--slate);
+      font-size: 0.75rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 6px;
+    }
+    .pill {
+      background: rgba(45, 212, 191, 0.10);
+      color: var(--green);
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      transition: all 0.3s;
+    }
+    .pill:hover {
+      background: rgba(45, 212, 191, 0.18);
+      transform: translateY(-1px);
+    }
+
+    nav { margin-top: 40px; }
+    nav ul { list-style: none; }
+
+    nav a {
+      display: flex;
+      align-items: center;
+      padding: 12px 0;
+      text-decoration: none;
+      color: var(--slate);
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    nav a::before {
+      content: '';
+      display: inline-block;
+      width: 30px;
+      height: 1px;
+      background: var(--slate);
+      margin-right: 15px;
+      transition: all 0.3s;
+    }
+
+    nav a:hover, nav a.active { color: var(--lightest-slate); }
+    nav a:hover::before, nav a.active::before {
+      width: 60px;
+      background: var(--green);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 20px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .social-links a {
+      color: var(--slate);
+      font-size: 1.5rem;
+      transition: color 0.3s, transform 0.3s;
+    }
+    .social-links a:hover {
+      color: var(--green);
+      transform: translateY(-3px);
+    }
+
+    .right-side { padding: 100px 0; z-index: 2; }
+
+    section { margin-bottom: 110px; scroll-margin-top: 100px; }
+
+    h2 {
+      color: var(--lightest-slate);
+      font-size: 0.875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 26px;
+      position: sticky;
+      top: 0;
+      background: var(--navy);
+      padding: 18px 0;
+      z-index: 10;
+    }
+
+    .about-text { 
+      color: var(--slate); 
+      margin-bottom: 16px; 
+      line-height: 1.85; 
+    }
+    .about-text a { 
+      color: var(--green); 
+      text-decoration: none; 
+      transition: color 0.3s;
+      font-weight: 500;
+    }
+    .about-text a:hover { color: var(--green-alt); }
+
+    .experience-item, .project-item {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 20px;
+      padding: 28px;
+      margin-bottom: 18px;
+      border-radius: 10px;
+      transition: all 0.3s;
+      cursor: default;
+      border: 1px solid transparent;
+    }
+
+    .experience-item:hover, .project-item:hover {
+      background-color: rgba(45, 212, 191, 0.05);
+      box-shadow: 0 4px 20px rgba(45, 212, 191, 0.08);
+      border-color: rgba(45, 212, 191, 0.20);
+    }
+
+    .date {
+      font-size: 0.75rem;
+      color: var(--slate);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 5px;
+    }
+
+    .content h3 {
+      color: var(--lightest-slate);
+      font-size: 1rem;
+      font-weight: 650;
+      margin-bottom: 6px;
+      transition: color 0.3s;
+    }
+
+    .experience-item:hover h3, .project-item:hover h3 { color: var(--green); }
+
+    .company {
+      color: var(--light-slate);
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+    }
+
+    .description {
+      color: var(--slate);
+      font-size: 0.875rem;
+      line-height: 1.65;
+      margin-bottom: 12px;
+    }
+
+    .bullet-list {
+      margin-top: 10px;
+      padding-left: 18px;
+      color: var(--slate);
+      font-size: 0.875rem;
+      line-height: 1.7;
+    }
+    .bullet-list li { margin-bottom: 8px; }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .tag {
+      background: rgba(45, 212, 191, 0.10);
+      color: var(--green);
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    .tag:hover {
+      background: rgba(45, 212, 191, 0.18);
+      transform: translateY(-1px);
+    }
+
+    .archive-link {
+      display: inline-flex;
+      align-items: center;
+      color: var(--lightest-slate);
+      text-decoration: none;
+      font-weight: 650;
+      margin-top: 18px;
+      transition: all 0.3s;
+      gap: 6px;
+    }
+    .archive-link:hover { 
+      color: var(--green); 
+      gap: 10px; 
+    }
+    .archive-link::after {
+      content: '→';
+      margin-left: 0;
+      transition: margin-left 0.3s;
+    }
+    .archive-link:hover::after { margin-left: 6px; }
+
+    .cert-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .cert-card {
+      border: 1px solid rgba(45, 212, 191, 0.15);
+      background: var(--muted);
+      border-radius: 12px;
+      padding: 14px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      transition: all 0.3s;
+    }
+
+    .cert-card:hover {
+      border-color: var(--green);
+      background: rgba(45, 212, 191, 0.08);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(45, 212, 191, 0.12);
+    }
+
+    .cert-card strong { 
+      color: var(--lightest-slate); 
+      font-size: 0.9rem; 
+    }
+    .cert-card span { 
+      color: var(--slate); 
+      font-size: 0.8rem; 
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 0;
+      color: var(--slate);
+      font-size: 0.875rem;
+    }
+
+    @media (max-width: 1024px) {
+      .container { grid-template-columns: 1fr; gap: 40px; padding: 0 30px; }
+      .left-side { position: relative; height: auto; padding: 50px 0 10px; }
+      nav { display: none; }
+      h1 { font-size: 2.5rem; }
+      .right-side { padding: 0 0 50px 0; }
+      .experience-item, .project-item { grid-template-columns: 1fr; padding: 20px; }
+      .date { margin-bottom: 10px; }
+      .cert-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      h1 { font-size: 2rem; }
+      .subtitle { font-size: 1.1rem; }
+      .container { padding: 0 20px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="spotlight"></div>
+
+  <div class="container">
+    <aside class="left-side">
+      <div class="header-content">
+        <h1>Abhinav Joshi</h1>
+        <p class="subtitle">ServiceNow Solutions Architect • ITOM/CMDB/CSDM • AI & Automation</p>
+
+        <p class="meta-line">
+          Austin, Texas •
+          <a href="mailto:abhinavjoshi@ymail.com">abhinavjoshi@ymail.com</a>
+        </p>
+
+        <p class="tagline">
+          Principal Technical Consultant and ServiceNow architect with 9+ years building enterprise solutions across ITOM, ITSM, ITAM, CSM, CMDB/CSDM, and integrations—now extending operations with governed AI and automation.
+        </p>
+
+        <!-- Inline SVG "ServiceNow Certification" badge/logo (no extra files) -->
+        <div class="cert-strip" aria-label="Certifications">
+          <div class="cert-badge" title="ServiceNow Certifications">
+            <svg width="44" height="44" viewBox="0 0 64 64" role="img" aria-label="ServiceNow Certification Badge">
+              <defs>
+                <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#ff3b30"></stop>
+                  <stop offset="1" stop-color="#b71c1c"></stop>
+                </linearGradient>
+              </defs>
+              <rect x="6" y="6" width="52" height="52" rx="14" fill="url(#grad)"></rect>
+              <circle cx="32" cy="30" r="12" fill="rgba(255,255,255,0.14)"></circle>
+              <path d="M26.5 31.5l3.6 3.6 7.7-8.6" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+              <text x="32" y="54" text-anchor="middle" font-size="10" font-family="Inter, Arial" fill="#fff" opacity="0.92">CERTIFIED</text>
+            </svg>
+            <div class="badge-text">
+              <strong>ServiceNow Certified</strong>
+              <span>CTA • CSA • CAD • CIS (Discovery/ITSM/CSM/HAM)</span>
+            </div>
+          </div>
+
+          <div class="pill-row" aria-label="Key focus areas">
+            <span class="pill">ITOM</span>
+            <span class="pill">CMDB/CSDM</span>
+            <span class="pill">Integrations</span>
+            <span class="pill">Now Assist / GenAI</span>
+          </div>
+
+        </div>
+
+        <nav>
+          <ul>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#certifications" class="nav-link">Certifications</a></li>
+            <li><a href="#experience" class="nav-link">Experience</a></li>
+            <li><a href="#skills" class="nav-link">Skills</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="social-links">
+        <!-- Update these URLs -->
+        <a href="https://github.com/yourusername" target="_blank" rel="noreferrer" aria-label="GitHub">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+          </svg>
+        </a>
+
+        <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+          </svg>
+        </a>
+
+        <!-- Removed Twitter (unless you want it). Email kept. -->
+        <a href="mailto:abhinavjoshi@ymail.com" aria-label="Email">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+        </a>
+      </div>
+    </aside>
+
+    <main class="right-side">
+
+      <section id="about">
+        <h2>About</h2>
+        <p class="about-text">
+          I’m a ServiceNow architect and hands-on developer with <strong>9+ years</strong> delivering enterprise solutions across
+          <strong>ITOM, ITSM, ITAM, CSM</strong>, and <strong>CMDB/CSDM</strong>. I’ve led workshops, written SOW-aligned deliverables,
+          and built scalable platform patterns that improve data trust and operational performance.
+        </p>
+        <p class="about-text">
+          My technical strengths include <strong>ServiceNow ITOM</strong> (Discovery, Event Management, Service Mapping),
+          CMDB optimization, integrations (REST), and web technologies (JavaScript, JSON/XML, HTML/CSS). I enjoy turning messy
+          enterprise realities into clean operating models and automation.
+        </p>
+        <p class="about-text">
+          Recently, I’ve been expanding AI-enabled operations (summarization, knowledge generation, and workflow automation) with
+          strong governance and measurable outcomes.
+        </p>
+      </section>
+
+      <section id="certifications">
+        <h2>Certifications</h2>
+
+        <div class="cert-grid" role="list" aria-label="ServiceNow certifications list">
+          <div class="cert-card" role="listitem">
+            <svg width="40" height="40" viewBox="0 0 64 64" aria-hidden="true">
+              <rect x="6" y="6" width="52" height="52" rx="14" fill="rgba(100,255,218,0.10)"></rect>
+              <path d="M26.5 32l4.2 4.2L41 24.5" fill="none" stroke="#64ffda" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            <div>
+              <strong>Certified Technical Architect (CTA)</strong><br />
+              <span>ServiceNow</span>
+            </div>
+          </div>
+
+          <div class="cert-card" role="listitem">
+            <svg width="40" height="40" viewBox="0 0 64 64" aria-hidden="true">
+              <rect x="6" y="6" width="52" height="52" rx="14" fill="rgba(100,255,218,0.10)"></rect>
+              <path d="M26.5 32l4.2 4.2L41 24.5" fill="none" stroke="#64ffda" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            <div>
+              <strong>CSA • CAD</strong><br />
+              <span>System Administrator • App Developer</span>
+            </div>
+          </div>
+
+          <div class="cert-card" role="listitem">
+            <svg width="40" height="40" viewBox="0 0 64 64" aria-hidden="true">
+              <rect x="6" y="6" width="52" height="52" rx="14" fill="rgba(100,255,218,0.10)"></rect>
+              <path d="M26.5 32l4.2 4.2L41 24.5" fill="none" stroke="#64ffda" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            <div>
+              <strong>CIS — Discovery</strong><br />
+              <span>ITOM Discovery</span>
+            </div>
+          </div>
+
+          <div class="cert-card" role="listitem">
+            <svg width="40" height="40" viewBox="0 0 64 64" aria-hidden="true">
+              <rect x="6" y="6" width="52" height="52" rx="14" fill="rgba(100,255,218,0.10)"></rect>
+              <path d="M26.5 32l4.2 4.2L41 24.5" fill="none" stroke="#64ffda" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            <div>
+              <strong>CIS — ITSM • CSM • HAM</strong><br />
+              <span>IT Service Mgmt • Customer Service Mgmt • Hardware Asset Mgmt</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience">
+        <h2>Experience</h2>
+
+        <div class="experience-item">
+          <div class="date">Jan 2025 — Present</div>
+          <div class="content">
+            <h3>Principal Technical Consultant · AHEAD Inc.</h3>
+            <p class="company">Austin, Texas</p>
+            <p class="description">
+              Lead large-scale consulting engagements across ITOM/ITAM/ITSM, delivering enterprise architecture, governance, and high-impact outcomes.
+            </p>
+            <ul class="bullet-list">
+              <li>Led a team of 4+ technical consultants across ITOM, ITAM, and ITSM engagements with consistent on-time delivery.</li>
+              <li>Served as a trusted advisor to senior stakeholders; developed high-impact recommendations, presentations, and reports.</li>
+              <li>Drove organizational change management for large transformational programs and supported business development activities.</li>
+              <li>Maintained <strong>4.5+ CSAT</strong> across project engagements.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">ServiceNow</span>
+              <span class="tag">ITOM</span>
+              <span class="tag">ITAM</span>
+              <span class="tag">ITSM</span>
+              <span class="tag">Platform Governance</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="experience-item">
+          <div class="date">Sep 2021 — Dec 2024</div>
+          <div class="content">
+            <h3>Senior Technical Consultant · AHEAD Inc.</h3>
+            <p class="company">Austin, Texas</p>
+            <p class="description">
+              Led design, development, and testing; ran workshops; produced written deliverables and SOW-aligned estimates.
+            </p>
+            <ul class="bullet-list">
+              <li>Delivered CMDB optimization, Discovery, Event Management, Service Mapping, ITSM, CSM, and ITAM engagements.</li>
+              <li>Reduced data redundancy by <strong>20%</strong> and improved incident resolution time by <strong>15%</strong> through ITOM + process improvements.</li>
+              <li>Partnered in pre-sales by crafting tailored solutions and supporting subscription-based estimates.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">CMDB</span>
+              <span class="tag">CSDM</span>
+              <span class="tag">Discovery</span>
+              <span class="tag">Event Management</span>
+              <span class="tag">Service Mapping</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="experience-item">
+          <div class="date">May 2019 — Sep 2021</div>
+          <div class="content">
+            <h3>Senior Technical Consultant · Engage ESM</h3>
+            <p class="company">Dallas, Texas</p>
+            <p class="description">
+              Built and customized ServiceNow applications, integrations, and self-service experiences across ITSM and enterprise workflows.
+            </p>
+            <ul class="bullet-list">
+              <li>Designed bi-directional integrations with <strong>Remedy, JIRA, Zendesk, and LMIS</strong>.</li>
+              <li>Built custom Discovery design patterns and extensive platform automation (BRs, Script Includes, UI Actions, Workflows).</li>
+              <li>Delivered mobile-friendly self-service portal frameworks and supported Design Partner Program initiatives.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">Integrations</span>
+              <span class="tag">Scripting</span>
+              <span class="tag">Portal</span>
+              <span class="tag">Discovery Patterns</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="experience-item">
+          <div class="date">Jul 2016 — May 2019</div>
+          <div class="content">
+            <h3>Application Developer · Atos IT Solution & Services</h3>
+            <p class="company">Dallas, Texas</p>
+            <p class="description">
+              Built a production-grade Unified Hybrid Cloud portal (CMP 2.0) using ServiceNow as the UI layer across public and private cloud platforms.
+            </p>
+            <ul class="bullet-list">
+              <li>Integrated AWS, Azure, Google, Virtustream, and VMware vCloud; built automation for clean-up of expired/unutilized cloud resources.</li>
+              <li>Created metering/health tracking using UI pages, events, scheduled scripts, and REST APIs.</li>
+              <li>Developed Alexa + ServiceNow integration via AWS Lambda; built Cortana bot skills for portal details and asset provisioning.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">AWS</span>
+              <span class="tag">Azure</span>
+              <span class="tag">Google Cloud</span>
+              <span class="tag">Kubernetes</span>
+              <span class="tag">Automation</span>
+            </div>
+          </div>
+        </div>
+
+      <section id="skills">
+        <h2>Skills</h2>
+
+        <div class="project-item">
+          <div class="date">ServiceNow</div>
+          <div class="content">
+            <h3>Platform + Modules</h3>
+            <p class="description">
+              ITSM, CSM, ITOM (Event Management, Discovery, Service Mapping), HAM, SAM, CMDB, CSDM, SPM, HR, UI Builder, Custom App Development, Integrations.
+            </p>
+            <div class="tags">
+              <span class="tag">ITSM</span>
+              <span class="tag">ITOM</span>
+              <span class="tag">CMDB</span>
+              <span class="tag">CSDM</span>
+              <span class="tag">UI Builder</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-item">
+          <div class="date">Tech</div>
+          <div class="content">
+            <h3>Engineering</h3>
+            <p class="description">
+              JavaScript, jQuery, XML, JSON, RESTful web services, HTML/CSS, Glide scripting, shell scripting, ITIL practices.
+            </p>
+            <div class="tags">
+              <span class="tag">JavaScript</span>
+              <span class="tag">REST</span>
+              <span class="tag">JSON/XML</span>
+              <span class="tag">Glide</span>
+              <span class="tag">ITIL</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-item">
+          <div class="date">Cloud</div>
+          <div class="content">
+            <h3>Cloud Platforms</h3>
+            <p class="description">
+              Amazon Web Services, Google Cloud, Microsoft Azure (plus vCloud / Virtustream exposure via hybrid cloud programs).
+            </p>
+            <div class="tags">
+              <span class="tag">AWS</span>
+              <span class="tag">Azure</span>
+              <span class="tag">GCP</span>
+              <span class="tag">Hybrid Cloud</span>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <footer>
+        <p>Designed & Built by Abhinav Joshi</p>/p>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    document.addEventListener('mousemove', (e) => {
+      const spotlight = document.querySelector('.spotlight');
+      spotlight.style.setProperty('--mouse-x', `${e.clientX}px`);
+      spotlight.style.setProperty('--mouse-y', `${e.clientY}px`);
+    });
+
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    function updateActiveNav() {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (window.scrollY >= (sectionTop - 200)) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').slice(1) === current) {
+          link.classList.add('active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', updateActiveNav);
+    updateActiveNav();
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        targetSection.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
