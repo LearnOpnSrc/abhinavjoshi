@@ -3,754 +3,682 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Abhinav Joshi — ServiceNow Solutions Architect | AI & Automation</title>
-  <meta name="description" content="Abhinav Joshi — ServiceNow Solutions Architect (CTA) focused on ITOM/CMDB/CSDM, integrations, and AI-enabled automation. Austin, TX." />
+  <title>Abhinav Joshi — ServiceNow Solutions Architect</title>
+  <meta name="description" content="ServiceNow Solutions Architect (CTA) specialized in ITOM, CMDB, CSDM, and enterprise integrations. Austin, TX." />
 
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      /* Slate Gray & Green Theme (Option 7) */
-      --navy: #1e2d3d;          /* slate background */
-      --light-navy: #273c52;    /* slightly lighter panel */
-      --lightest-navy: #2d4a63; /* hover surface */
-      --slate: #94a3b8;         /* light slate text */
-      --light-slate: #cbd5e1;   /* mid emphasis text */
-      --lightest-slate: #e2e8f0;/* near-white for headings */
-      --green: #2dd4bf;         /* turquoise accent */
-      --green-alt: #10b981;     /* emerald accent alternative */
-      --muted: rgba(148, 163, 184, 0.08); /* subtle bg for cards */
+      /* Neutral Color Palette */
+      --bg-dark: #1a1a1a;
+      --bg-medium: #242424;
+      --bg-light: #2e2e2e;
+      --text-primary: #e0e0e0;
+      --text-secondary: #a0a0a0;
+      --text-muted: #707070;
+      --accent: #4a90e2;
+      --accent-light: #6ba3e8;
+      --border: rgba(255, 255, 255, 0.1);
     }
+
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background-color: var(--navy);
-      color: var(--slate);
+      background-color: var(--bg-dark);
+      color: var(--text-secondary);
       line-height: 1.6;
       overflow-x: hidden;
     }
 
-    .spotlight {
+    /* Header/Navigation */
+    header {
       position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      pointer-events: none;
-      z-index: 1;
-      background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-              rgba(45, 212, 191, 0.15),
-              transparent 80%);
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-    body:hover .spotlight { opacity: 1; }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 50px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 100px;
-      min-height: 100vh;
-    }
-
-    .left-side {
-      position: sticky;
       top: 0;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 90px 0;
-      z-index: 2;
+      left: 0;
+      right: 0;
+      background: rgba(26, 26, 26, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      border-bottom: 1px solid var(--border);
     }
 
-    .header-content {
-      flex-grow: 1;
+    nav {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    /* Sections */
+    section {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 100px 50px;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
 
-    h1 {
-      font-size: 3rem;
+    .section-title {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 15px;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding-top: 120px;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
       font-weight: 700;
-      color: var(--lightest-slate);
-      margin-bottom: 10px;
+      color: var(--text-primary);
+      margin-bottom: 20px;
       line-height: 1.1;
     }
 
-    .subtitle {
-      font-size: 1.2rem;
-      color: var(--light-slate);
+    .hero .subtitle {
+      font-size: 1.8rem;
+      color: var(--text-secondary);
+      margin-bottom: 30px;
+      line-height: 1.4;
+    }
+
+    .hero .description {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 700px;
+      line-height: 1.8;
+      margin-bottom: 40px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .btn {
+      padding: 15px 35px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-light);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      border: 2px solid var(--border);
+      color: var(--text-primary);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Expertise Section */
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      margin-top: 50px;
+    }
+
+    .expertise-card {
+      background: var(--bg-medium);
+      padding: 40px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      transition: all 0.3s;
+    }
+
+    .expertise-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-5px);
+    }
+
+    .expertise-card h3 {
+      font-size: 1.4rem;
+      color: var(--text-primary);
+      margin-bottom: 15px;
+    }
+
+    .expertise-card p {
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    /* Experience Section */
+    .experience-timeline {
+      margin-top: 50px;
+    }
+
+    .experience-item {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 40px;
+      margin-bottom: 60px;
+      padding-bottom: 60px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .experience-item:last-child {
+      border-bottom: none;
+    }
+
+    .experience-date {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .experience-content h3 {
+      font-size: 1.5rem;
+      color: var(--text-primary);
       margin-bottom: 10px;
     }
 
-    .meta-line {
-      font-size: 0.95rem;
-      color: var(--slate);
-      margin-bottom: 18px;
-    }
-    .meta-line a { 
-      color: var(--lightest-slate); 
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-    .meta-line a:hover { color: var(--green); }
-
-    .tagline {
-      font-size: 1rem;
-      color: var(--slate);
-      max-width: 420px;
-      margin-bottom: 22px;
-      line-height: 1.75;
+    .experience-company {
+      color: var(--accent);
+      font-size: 1.1rem;
+      margin-bottom: 15px;
     }
 
-    .cert-strip {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin: 10px 0 26px 0;
+    .experience-description {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 20px;
     }
 
-    .cert-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 12px;
-      border-radius: 12px;
-      background: var(--muted);
-      border: 1px solid rgba(45, 212, 191, 0.15);
-      transition: all 0.3s;
+    .experience-list {
+      list-style: none;
+      margin-top: 15px;
     }
 
-    .cert-badge:hover {
-      border-color: var(--green);
-      background: rgba(45, 212, 191, 0.12);
-    }
-
-    .cert-badge .badge-text {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      line-height: 1.2;
-    }
-    .cert-badge .badge-text strong {
-      color: var(--lightest-slate);
-      font-size: 0.85rem;
-      letter-spacing: 0.02em;
-    }
-    .cert-badge .badge-text span {
-      color: var(--slate);
-      font-size: 0.75rem;
-    }
-
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 6px;
-    }
-    .pill {
-      background: rgba(45, 212, 191, 0.10);
-      color: var(--green);
-      padding: 4px 12px;
-      border-radius: 999px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-      transition: all 0.3s;
-    }
-    .pill:hover {
-      background: rgba(45, 212, 191, 0.18);
-      transform: translateY(-1px);
-    }
-
-    nav { margin-top: 40px; }
-    nav ul { list-style: none; }
-
-    nav a {
-      display: flex;
-      align-items: center;
-      padding: 12px 0;
-      text-decoration: none;
-      color: var(--slate);
-      font-size: 0.875rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      transition: all 0.3s;
+    .experience-list li {
+      color: var(--text-secondary);
+      padding-left: 25px;
+      margin-bottom: 10px;
       position: relative;
     }
 
-    nav a::before {
-      content: '';
-      display: inline-block;
-      width: 30px;
-      height: 1px;
-      background: var(--slate);
-      margin-right: 15px;
-      transition: all 0.3s;
+    .experience-list li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
     }
-
-    nav a:hover, nav a.active { color: var(--lightest-slate); }
-    nav a:hover::before, nav a.active::before {
-      width: 60px;
-      background: var(--green);
-    }
-
-    .social-links {
-      display: flex;
-      gap: 20px;
-      margin-top: 30px;
-      flex-wrap: wrap;
-    }
-
-    .social-links a {
-      color: var(--slate);
-      font-size: 1.5rem;
-      transition: color 0.3s, transform 0.3s;
-    }
-    .social-links a:hover {
-      color: var(--green);
-      transform: translateY(-3px);
-    }
-
-    .right-side { padding: 100px 0; z-index: 2; }
-
-    section { margin-bottom: 110px; scroll-margin-top: 100px; }
-
-    h2 {
-      color: var(--lightest-slate);
-      font-size: 0.875rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 26px;
-      position: sticky;
-      top: 0;
-      background: var(--navy);
-      padding: 18px 0;
-      z-index: 10;
-    }
-
-    .about-text { 
-      color: var(--slate); 
-      margin-bottom: 16px; 
-      line-height: 1.85; 
-    }
-    .about-text a { 
-      color: var(--green); 
-      text-decoration: none; 
-      transition: color 0.3s;
-      font-weight: 500;
-    }
-    .about-text a:hover { color: var(--green-alt); }
-
-    .experience-item, .project-item {
-      display: grid;
-      grid-template-columns: 140px 1fr;
-      gap: 20px;
-      padding: 28px;
-      margin-bottom: 18px;
-      border-radius: 10px;
-      transition: all 0.3s;
-      cursor: default;
-      border: 1px solid transparent;
-    }
-
-    .experience-item:hover, .project-item:hover {
-      background-color: rgba(45, 212, 191, 0.05);
-      box-shadow: 0 4px 20px rgba(45, 212, 191, 0.08);
-      border-color: rgba(45, 212, 191, 0.20);
-    }
-
-    .date {
-      font-size: 0.75rem;
-      color: var(--slate);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-top: 5px;
-    }
-
-    .content h3 {
-      color: var(--lightest-slate);
-      font-size: 1rem;
-      font-weight: 650;
-      margin-bottom: 6px;
-      transition: color 0.3s;
-    }
-
-    .experience-item:hover h3, .project-item:hover h3 { color: var(--green); }
-
-    .company {
-      color: var(--light-slate);
-      font-size: 0.9rem;
-      margin-bottom: 10px;
-    }
-
-    .description {
-      color: var(--slate);
-      font-size: 0.875rem;
-      line-height: 1.65;
-      margin-bottom: 12px;
-    }
-
-    .bullet-list {
-      margin-top: 10px;
-      padding-left: 18px;
-      color: var(--slate);
-      font-size: 0.875rem;
-      line-height: 1.7;
-    }
-    .bullet-list li { margin-bottom: 8px; }
 
     .tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 14px;
+      gap: 10px;
+      margin-top: 20px;
     }
 
     .tag {
-      background: rgba(45, 212, 191, 0.10);
-      color: var(--green);
-      padding: 4px 12px;
-      border-radius: 999px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      transition: all 0.3s;
-    }
-    .tag:hover {
-      background: rgba(45, 212, 191, 0.18);
-      transform: translateY(-1px);
+      background: rgba(74, 144, 226, 0.1);
+      color: var(--accent);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
     }
 
-    .archive-link {
-      display: inline-flex;
-      align-items: center;
-      color: var(--lightest-slate);
-      text-decoration: none;
-      font-weight: 650;
-      margin-top: 18px;
-      transition: all 0.3s;
-      gap: 6px;
-    }
-    .archive-link:hover { 
-      color: var(--green); 
-      gap: 10px; 
-    }
-    .archive-link::after {
-      content: '→';
-      margin-left: 0;
-      transition: margin-left 0.3s;
-    }
-    .archive-link:hover::after { margin-left: 6px; }
-
+    /* Certifications Section */
     .cert-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-top: 10px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 50px;
     }
 
     .cert-card {
-      border: 1px solid rgba(45, 212, 191, 0.15);
-      background: var(--muted);
+      background: var(--bg-medium);
+      padding: 30px;
       border-radius: 12px;
-      padding: 14px;
-      display: flex;
-      gap: 12px;
-      align-items: center;
+      border: 1px solid var(--border);
       transition: all 0.3s;
     }
 
     .cert-card:hover {
-      border-color: var(--green);
-      background: rgba(45, 212, 191, 0.08);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(45, 212, 191, 0.12);
+      border-color: var(--accent);
+      transform: translateY(-3px);
     }
 
-    .cert-card strong { 
-      color: var(--lightest-slate); 
-      font-size: 0.9rem; 
-    }
-    .cert-card span { 
-      color: var(--slate); 
-      font-size: 0.8rem; 
+    .cert-card h3 {
+      font-size: 1.2rem;
+      color: var(--text-primary);
+      margin-bottom: 8px;
     }
 
+    .cert-card p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    .cert-badge-img {
+      width: 100px;
+      height: auto;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+      transition: transform 0.3s;
+    }
+
+    .cert-card:hover .cert-badge-img {
+      transform: scale(1.05);
+    }
+
+    /* Contact Section */
+    .contact-content {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .contact-content h2 {
+      font-size: 3rem;
+      color: var(--text-primary);
+      margin-bottom: 30px;
+    }
+
+    .contact-content p {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 40px;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .contact-links a {
+      color: var(--text-secondary);
+      font-size: 1.8rem;
+      transition: all 0.3s;
+    }
+
+    .contact-links a:hover {
+      color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    /* Footer */
     footer {
       text-align: center;
-      padding: 40px 0;
-      color: var(--slate);
-      font-size: 0.875rem;
+      padding: 40px 50px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--border);
     }
 
+    /* Responsive */
     @media (max-width: 1024px) {
-      .container { grid-template-columns: 1fr; gap: 40px; padding: 0 30px; }
-      .left-side { position: relative; height: auto; padding: 50px 0 10px; }
-      nav { display: none; }
-      h1 { font-size: 2.5rem; }
-      .right-side { padding: 0 0 50px 0; }
-      .experience-item, .project-item { grid-template-columns: 1fr; padding: 20px; }
-      .date { margin-bottom: 10px; }
-      .cert-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 3rem; }
+      .hero .subtitle { font-size: 1.5rem; }
+      section { padding: 80px 30px; }
+      nav { padding: 20px 30px; }
+      .experience-item { grid-template-columns: 1fr; gap: 20px; }
     }
 
-    @media (max-width: 640px) {
-      h1 { font-size: 2rem; }
-      .subtitle { font-size: 1.1rem; }
-      .container { padding: 0 20px; }
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.5rem; }
+      .hero .subtitle { font-size: 1.3rem; }
+      .nav-links { display: none; }
+      .cta-buttons { flex-direction: column; }
+      section { padding: 60px 20px; }
     }
   </style>
 </head>
 
 <body>
-  <div class="spotlight"></div>
+  <!-- Navigation -->
+  <header>
+    <nav>
+      <a href="#" class="logo">AJ</a>
+      <ul class="nav-links">
+        <li><a href="#home">// home</a></li>
+        <li><a href="#expertise">// expertise</a></li>
+        <li><a href="#experience">// experience</a></li>
+        <li><a href="#certifications">// certifications</a></li>
+        <li><a href="#contact">// contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <div class="container">
-    <aside class="left-side">
-      <div class="header-content">
-        <h1>Abhinav Joshi</h1>
-        <p class="subtitle">ServiceNow Solutions Architect • ITOM/CMDB/CSDM • AI & Automation</p>
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <p class="section-title">ServiceNow Solutions Architect</p>
+    <h1>Abhinav Joshi</h1>
+    <p class="subtitle">Principal Technical Consultant specializing in ITOM, CMDB/CSDM, and AI-enabled automation.</p>
+    <p class="description">
+      With 9+ years of experience delivering enterprise ServiceNow solutions, I help organizations optimize their IT operations, improve data trust, and implement scalable platform patterns that drive measurable business outcomes.
+    </p>
+    <div class="cta-buttons">
+      <a href="#contact" class="btn btn-primary">Get in Touch</a>
+      <a href="#experience" class="btn btn-secondary">View Experience</a>
+    </div>
+  </section>
 
-        <p class="meta-line">
-          Austin, Texas •
-          <a href="mailto:abhinavjoshi@ymail.com">abhinavjoshi@ymail.com</a>
-        </p>
+  <!-- Expertise Section -->
+  <section id="expertise">
+    <p class="section-title">What I Do</p>
+    <h2 style="font-size: 2.5rem; color: var(--text-primary); margin-bottom: 20px;">My Expertise</h2>
+    
+    <div class="expertise-grid">
+      <div class="expertise-card">
+        <h3>ITOM & Discovery</h3>
+        <p>Expert in ServiceNow ITOM suite including Discovery, Event Management, Service Mapping, and Cloud Management. Building automated discovery patterns and optimizing infrastructure visibility.</p>
+      </div>
+      
+      <div class="expertise-card">
+        <h3>CMDB & CSDM</h3>
+        <p>Specialized in CMDB optimization and Common Service Data Model implementation. Reducing data redundancy and establishing data governance frameworks for enterprise-scale deployments.</p>
+      </div>
+      
+      <div class="expertise-card">
+        <h3>Enterprise Integrations</h3>
+        <p>Designing and implementing bi-directional integrations with enterprise systems (Remedy, JIRA, Zendesk) using REST APIs, MID Servers, and custom integration patterns.</p>
+      </div>
+      
+      <div class="expertise-card">
+        <h3>Platform Architecture</h3>
+        <p>Leading enterprise architecture initiatives, governance frameworks, and scalable solution design across ITSM, CSM, ITAM, and HR modules with focus on best practices.</p>
+      </div>
+      
+      <div class="expertise-card">
+        <h3>AI & Automation</h3>
+        <p>Implementing Now Assist and GenAI capabilities for knowledge generation, summarization, and workflow automation with strong governance and measurable ROI.</p>
+      </div>
+      
+      <div class="expertise-card">
+        <h3>Technical Leadership</h3>
+        <p>Leading technical teams, running workshops, producing SOW-aligned deliverables, and serving as trusted advisor to senior stakeholders on transformational programs.</p>
+      </div>
+    </div>
+  </section>
 
-        <p class="tagline">
-          Principal Technical Consultant and ServiceNow architect with 9+ years building enterprise solutions across ITOM, ITSM, ITAM, CSM, CMDB/CSDM, and integrations—now extending operations with governed AI and automation.
-        </p>
-
-        <!-- Inline SVG "ServiceNow Certification" badge/logo (no extra files) -->
-        <div class="cert-strip" aria-label="Certifications">
-          <div class="cert-badge" title="ServiceNow Certifications">
-            <svg width="44" height="44" viewBox="0 0 64 64" role="img" aria-label="ServiceNow Certification Badge">
-              <defs>
-                <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0" stop-color="#ff3b30"></stop>
-                  <stop offset="1" stop-color="#b71c1c"></stop>
-                </linearGradient>
-              </defs>
-              <rect x="6" y="6" width="52" height="52" rx="14" fill="url(#grad)"></rect>
-              <circle cx="32" cy="30" r="12" fill="rgba(255,255,255,0.14)"></circle>
-              <path d="M26.5 31.5l3.6 3.6 7.7-8.6" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
-              <text x="32" y="54" text-anchor="middle" font-size="10" font-family="Inter, Arial" fill="#fff" opacity="0.92">CERTIFIED</text>
-            </svg>
-            <div class="badge-text">
-              <strong>ServiceNow Certified</strong>
-              <span>CTA • CSA • CAD • CIS (Discovery/ITSM/CSM/HAM)</span>
-            </div>
-          </div>
-
-          <div class="pill-row" aria-label="Key focus areas">
-            <span class="pill">ITOM</span>
-            <span class="pill">CMDB/CSDM</span>
-            <span class="pill">Integrations</span>
-            <span class="pill">Now Assist / GenAI</span>
-          </div>
-
-        </div>
-
-        <nav>
-          <ul>
-            <li><a href="#about" class="nav-link">About</a></li>
-            <li><a href="#certifications" class="nav-link">Certifications</a></li>
-            <li><a href="#experience" class="nav-link">Experience</a></li>
-            <li><a href="#skills" class="nav-link">Skills</a></li>
+  <!-- Experience Section -->
+  <section id="experience">
+    <p class="section-title">Career Journey</p>
+    <h2 style="font-size: 2.5rem; color: var(--text-primary); margin-bottom: 20px;">Professional Experience</h2>
+    
+    <div class="experience-timeline">
+      <div class="experience-item">
+        <div class="experience-date">JAN 2025 — PRESENT</div>
+        <div class="experience-content">
+          <h3>Principal Technical Consultant</h3>
+          <p class="experience-company">AHEAD Inc. • Austin, Texas</p>
+          <p class="experience-description">
+            Leading large-scale consulting engagements across ITOM/ITAM/ITSM, delivering enterprise architecture, governance, and high-impact outcomes.
+          </p>
+          <ul class="experience-list">
+            <li>Led a team of 4+ technical consultants across ITOM, ITAM, and ITSM engagements with consistent on-time delivery</li>
+            <li>Served as trusted advisor to senior stakeholders; developed high-impact recommendations and reports</li>
+            <li>Drove organizational change management for large transformational programs</li>
+            <li>Maintained 4.5+ CSAT across project engagements</li>
           </ul>
-        </nav>
+          <div class="tags">
+            <span class="tag">ServiceNow</span>
+            <span class="tag">ITOM</span>
+            <span class="tag">ITAM</span>
+            <span class="tag">Platform Governance</span>
+            <span class="tag">Leadership</span>
+          </div>
+        </div>
       </div>
 
-      <div class="social-links">
-        <a href="https://github.com/LearnOpnSrc" target="_blank" rel="noreferrer" aria-label="GitHub">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+      <div class="experience-item">
+        <div class="experience-date">SEP 2021 — DEC 2024</div>
+        <div class="experience-content">
+          <h3>Senior Technical Consultant</h3>
+          <p class="experience-company">AHEAD Inc. • Austin, Texas</p>
+          <p class="experience-description">
+            Led design, development, and testing; ran workshops; produced written deliverables and SOW-aligned estimates.
+          </p>
+          <ul class="experience-list">
+            <li>Delivered CMDB optimization, Discovery, Event Management, Service Mapping, ITSM, CSM, and ITAM engagements</li>
+            <li>Reduced data redundancy by 20% and improved incident resolution time by 15%</li>
+            <li>Partnered in pre-sales by crafting tailored solutions and subscription-based estimates</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">CMDB</span>
+            <span class="tag">CSDM</span>
+            <span class="tag">Discovery</span>
+            <span class="tag">Event Management</span>
+            <span class="tag">Service Mapping</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="experience-item">
+        <div class="experience-date">MAY 2019 — SEP 2021</div>
+        <div class="experience-content">
+          <h3>Senior Technical Consultant</h3>
+          <p class="experience-company">Engage ESM • Dallas, Texas</p>
+          <p class="experience-description">
+            Built and customized ServiceNow applications, integrations, and self-service experiences across ITSM and enterprise workflows.
+          </p>
+          <ul class="experience-list">
+            <li>Designed bi-directional integrations with Remedy, JIRA, Zendesk, and LMIS</li>
+            <li>Built custom Discovery design patterns and extensive platform automation</li>
+            <li>Delivered mobile-friendly self-service portal frameworks</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">Integrations</span>
+            <span class="tag">Scripting</span>
+            <span class="tag">Portal Development</span>
+            <span class="tag">REST APIs</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="experience-item">
+        <div class="experience-date">JUL 2016 — MAY 2019</div>
+        <div class="experience-content">
+          <h3>Application Developer</h3>
+          <p class="experience-company">Atos IT Solution & Services • Dallas, Texas</p>
+          <p class="experience-description">
+            Built production-grade Unified Hybrid Cloud portal (CMP 2.0) using ServiceNow as UI layer across public and private cloud platforms.
+          </p>
+          <ul class="experience-list">
+            <li>Integrated AWS, Azure, Google Cloud, Virtustream, and VMware vCloud</li>
+            <li>Built automation for clean-up of expired/unutilized cloud resources</li>
+            <li>Developed Alexa + ServiceNow integration via AWS Lambda</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">AWS</span>
+            <span class="tag">Azure</span>
+            <span class="tag">Google Cloud</span>
+            <span class="tag">Automation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications Section -->
+  <section id="certifications">
+    <p class="section-title">Credentials</p>
+    <h2 style="font-size: 2.5rem; color: var(--text-primary); margin-bottom: 20px;">Certifications</h2>
+    
+    <div class="cert-grid">
+      <div class="cert-card">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 230'%3E%3Cdefs%3E%3ClinearGradient id='g1' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2393dc5c'/%3E%3Cstop offset='1' stop-color='%23ffb600'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M100 10 L190 60 L190 170 L100 220 L10 170 L10 60 Z' fill='url(%23g1)'/%3E%3Cpath d='M100 25 L175 65 L175 165 L100 205 L25 165 L25 65 Z' fill='%23003d4f'/%3E%3Ctext x='100' y='75' text-anchor='middle' font-size='12' fill='white' font-family='Arial'%3EserviceNow.%3C/text%3E%3Ctext x='100' y='125' text-anchor='middle' font-size='16' fill='%2393dc5c' font-weight='bold' font-family='Arial'%3ECertified%3C/text%3E%3Ctext x='100' y='145' text-anchor='middle' font-size='14' fill='white' font-family='Arial'%3ETechnical%3C/text%3E%3Ctext x='100' y='165' text-anchor='middle' font-size='14' fill='white' font-family='Arial'%3EArchitect%3C/text%3E%3Cpath d='M85 190 L75 180 L90 165' stroke='white' stroke-width='3' fill='none'/%3E%3Cpath d='M95 190 L115 170' stroke='white' stroke-width='3' fill='none'/%3E%3C/svg%3E" alt="CTA Badge" class="cert-badge-img">
+        <h3>Certified Technical Architect (CTA)</h3>
+        <p>ServiceNow's highest technical certification</p>
+      </div>
+      
+      <div class="cert-card">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 230'%3E%3Cdefs%3E%3ClinearGradient id='g2' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2393dc5c'/%3E%3Cstop offset='1' stop-color='%2393dc5c'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M100 10 L190 60 L190 170 L100 220 L10 170 L10 60 Z' fill='url(%23g2)'/%3E%3Cpath d='M100 25 L175 65 L175 165 L100 205 L25 165 L25 65 Z' fill='%23003d4f'/%3E%3Ctext x='100' y='75' text-anchor='middle' font-size='12' fill='white' font-family='Arial'%3EserviceNow.%3C/text%3E%3Ctext x='100' y='115' text-anchor='middle' font-size='16' fill='%2393dc5c' font-weight='bold' font-family='Arial'%3ECertified%3C/text%3E%3Ctext x='100' y='140' text-anchor='middle' font-size='13' fill='white' font-family='Arial'%3ESystem%3C/text%3E%3Ctext x='100' y='160' text-anchor='middle' font-size='13' fill='white' font-family='Arial'%3EAdministrator%3C/text%3E%3C/svg%3E" alt="CSA Badge" class="cert-badge-img">
+        <h3>Certified System Administrator (CSA)</h3>
+        <p>Platform administration and configuration</p>
+      </div>
+      
+      <div class="cert-card">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 230'%3E%3Cdefs%3E%3ClinearGradient id='g3' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2393dc5c'/%3E%3Cstop offset='1' stop-color='%2393dc5c'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M100 10 L190 60 L190 170 L100 220 L10 170 L10 60 Z' fill='url(%23g3)'/%3E%3Cpath d='M100 25 L175 65 L175 165 L100 205 L25 165 L25 65 Z' fill='%23003d4f'/%3E%3Ctext x='100' y='75' text-anchor='middle' font-size='12' fill='white' font-family='Arial'%3EserviceNow.%3C/text%3E%3Ctext x='100' y='115' text-anchor='middle' font-size='16' fill='%2393dc5c' font-weight='bold' font-family='Arial'%3ECertified%3C/text%3E%3Ctext x='100' y='140' text-anchor='middle' font-size='13' fill='white' font-family='Arial'%3EApplication%3C/text%3E%3Ctext x='100' y='160' text-anchor='middle' font-size='13' fill='white' font-family='Arial'%3EDeveloper%3C/text%3E%3C/svg%3E" alt="CAD Badge" class="cert-badge-img">
+        <h3>Certified Application Developer (CAD)</h3>
+        <p>Custom application development</p>
+      </div>
+      
+      <div class="cert-card">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 230'%3E%3Cdefs%3E%3ClinearGradient id='g4' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2393dc5c'/%3E%3Cstop offset='1' stop-color='%2393dc5c'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M100 10 L190 60 L190 170 L100 220 L10 170 L10 60 Z' fill='url(%23g4)'/%3E%3Cpath d='M100 25 L175 65 L175 165 L100 205 L25 165 L25 65 Z' fill='%23003d4f'/%3E%3Ctext x='100' y='75' text-anchor='middle' font-size='12' fill='white' font-family='Arial'%3EserviceNow.%3C/text%3E%3Ctext x='100' y='110' text-anchor='middle' font-size='16' fill='%2393dc5c' font-weight='bold' font-family='Arial'%3ECertified%3C/text%3E%3Ctext x='100' y='135' text-anchor='middle' font-size='12' fill='white' font-family='Arial'%3EImplementation%3C/text%3E%3Ctext x='100' y='152' text-anchor='middle' font-size='12' fill='white' font-family='Arial'%3ESpecialist%3C/text%3E%3Ctext x='100' y='172' text-anchor='middle' font-size='13' fill='white' font-family='Arial'%3EDiscovery%3C/text%3E%3C/svg%3E" alt="CIS Discovery Badge" class="cert-badge-img">
+        <h3>CIS — Discovery</h3>
+        <p>IT Operations Management Discovery</p>
+      </div>
+      
+      <div class="cert-card">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 230'%3E%3Cdefs%3E%3ClinearGradient id='g5' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2393dc5c'/%3E%3Cstop offset='1' stop-color='%2393dc5c'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M100 10 L190 60 L190 170 L100 220 L10 170 L10 60 Z' fill='url(%23g5)'/%3E%3Cpath d='M100 25 L175 65 L175 165 L100 205 L25 165 L25 65 Z' fill='%23003d4f'/%3E%3Ctext x='100' y='75' text-anchor='middle' font-size='12' fill='white' font-family='Arial'%3EserviceNow.%3C/text%3E%3Ctext x='100' y='110' text-anchor='middle' font-size='16' fill='%2393dc5c' font-weight='bold' font-family='Arial'%3ECertified%3C/text%3E%3Ctext x='100' y='135' text-anchor='middle' font-size='12' fill='white' font-family='Arial'%3EImplementation%3C/text%3E%3Ctext x='100' y='152' text-anchor='middle' font-size='12' fill='white' font-family='Arial'%3ESpecialist%3C/text%3E%3Ctext x='100' y='172' text-anchor='middle' font-size='13' fill='white' font-family='Arial'%3EITSM%3C/text%3E%3C/svg%3E" alt="CIS ITSM Badge" class="cert-badge-img">
+        <h3>CIS — ITSM</h3>
+        <p>IT Service Management implementation</p>
+      </div>
+      
+      <div class="cert-card">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 230'%3E%3Cdefs%3E%3ClinearGradient id='g6' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2393dc5c'/%3E%3Cstop offset='1' stop-color='%2393dc5c'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M100 10 L190 60 L190 170 L100 220 L10 170 L10 60 Z' fill='url(%23g6)'/%3E%3Cpath d='M100 25 L175 65 L175 165 L100 205 L25 165 L25 65 Z' fill='%23003d4f'/%3E%3Ctext x='100' y='75' text-anchor='middle' font-size='12' fill='white' font-family='Arial'%3EserviceNow.%3C/text%3E%3Ctext x='100' y='110' text-anchor='middle' font-size='16' fill='%2393dc5c' font-weight='bold' font-family='Arial'%3ECertified%3C/text%3E%3Ctext x='100' y='135' text-anchor='middle' font-size='12' fill='white' font-family='Arial'%3EImplementation%3C/text%3E%3Ctext x='100' y='152' text-anchor='middle' font-size='12' fill='white' font-family='Arial'%3ESpecialist%3C/text%3E%3Ctext x='100' y='172' text-anchor='middle' font-size='13' fill='white' font-family='Arial'%3ECSM%3C/text%3E%3C/svg%3E" alt="CIS CSM Badge" class="cert-badge-img">
+        <h3>CIS — CSM</h3>
+        <p>Customer Service Management</p>
+      </div>
+      
+      <div class="cert-card">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 230'%3E%3Cdefs%3E%3ClinearGradient id='g7' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2393dc5c'/%3E%3Cstop offset='1' stop-color='%2393dc5c'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M100 10 L190 60 L190 170 L100 220 L10 170 L10 60 Z' fill='url(%23g7)'/%3E%3Cpath d='M100 25 L175 65 L175 165 L100 205 L25 165 L25 65 Z' fill='%23003d4f'/%3E%3Ctext x='100' y='75' text-anchor='middle' font-size='12' fill='white' font-family='Arial'%3EserviceNow.%3C/text%3E%3Ctext x='100' y='110' text-anchor='middle' font-size='16' fill='%2393dc5c' font-weight='bold' font-family='Arial'%3ECertified%3C/text%3E%3Ctext x='100' y='135' text-anchor='middle' font-size='12' fill='white' font-family='Arial'%3EImplementation%3C/text%3E%3Ctext x='100' y='152' text-anchor='middle' font-size='12' fill='white' font-family='Arial'%3ESpecialist%3C/text%3E%3Ctext x='100' y='172' text-anchor='middle' font-size='13' fill='white' font-family='Arial'%3EHAM%3C/text%3E%3C/svg%3E" alt="CIS HAM Badge" class="cert-badge-img">
+        <h3>CIS — HAM</h3>
+        <p>Hardware Asset Management</p>
+      </div>
+
+      <div class="cert-card">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 230'%3E%3Cdefs%3E%3ClinearGradient id='g8' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2393dc5c'/%3E%3Cstop offset='1' stop-color='%2393dc5c'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M100 10 L190 60 L190 170 L100 220 L10 170 L10 60 Z' fill='url(%23g8)'/%3E%3Cpath d='M100 25 L175 65 L175 165 L100 205 L25 165 L25 65 Z' fill='%23003d4f'/%3E%3Ctext x='100' y='75' text-anchor='middle' font-size='12' fill='white' font-family='Arial'%3EserviceNow.%3C/text%3E%3Ctext x='100' y='110' text-anchor='middle' font-size='16' fill='%2393dc5c' font-weight='bold' font-family='Arial'%3ECertified%3C/text%3E%3Ctext x='100' y='135' text-anchor='middle' font-size='12' fill='white' font-family='Arial'%3EImplementation%3C/text%3E%3Ctext x='100' y='152' text-anchor='middle' font-size='12' fill='white' font-family='Arial'%3ESpecialist%3C/text%3E%3Ctext x='100' y='172' text-anchor='middle' font-size='13' fill='white' font-family='Arial'%3EEM%3C/text%3E%3C/svg%3E" alt="CIS EM Badge" class="cert-badge-img">
+        <h3>CIS — Event Management</h3>
+        <p>IT Operations Management Event Management</p>
+      </div>
+
+      <div class="cert-card">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 230'%3E%3Cdefs%3E%3ClinearGradient id='g9' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2393dc5c'/%3E%3Cstop offset='1' stop-color='%2393dc5c'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M100 10 L190 60 L190 170 L100 220 L10 170 L10 60 Z' fill='url(%23g9)'/%3E%3Cpath d='M100 25 L175 65 L175 165 L100 205 L25 165 L25 65 Z' fill='%23003d4f'/%3E%3Ctext x='100' y='75' text-anchor='middle' font-size='12' fill='white' font-family='Arial'%3EserviceNow.%3C/text%3E%3Ctext x='100' y='110' text-anchor='middle' font-size='16' fill='%2393dc5c' font-weight='bold' font-family='Arial'%3ECertified%3C/text%3E%3Ctext x='100' y='135' text-anchor='middle' font-size='12' fill='white' font-family='Arial'%3EImplementation%3C/text%3E%3Ctext x='100' y='152' text-anchor='middle' font-size='12' fill='white' font-family='Arial'%3ESpecialist%3C/text%3E%3Ctext x='100' y='172' text-anchor='middle' font-size='13' fill='white' font-family='Arial'%3ESM%3C/text%3E%3C/svg%3E" alt="CIS SM Badge" class="cert-badge-img">
+        <h3>CIS — Service Mapping</h3>
+        <p>IT Operations Management Service Mapping</p>
+      </div>
+
+      <div class="cert-card">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 230'%3E%3Cdefs%3E%3ClinearGradient id='g10' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2393dc5c'/%3E%3Cstop offset='1' stop-color='%2393dc5c'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M100 10 L190 60 L190 170 L100 220 L10 170 L10 60 Z' fill='url(%23g10)'/%3E%3Cpath d='M100 25 L175 65 L175 165 L100 205 L25 165 L25 65 Z' fill='%23003d4f'/%3E%3Ctext x='100' y='75' text-anchor='middle' font-size='12' fill='white' font-family='Arial'%3EserviceNow.%3C/text%3E%3Ctext x='100' y='110' text-anchor='middle' font-size='16' fill='%2393dc5c' font-weight='bold' font-family='Arial'%3ECertified%3C/text%3E%3Ctext x='100' y='135' text-anchor='middle' font-size='12' fill='white' font-family='Arial'%3EImplementation%3C/text%3E%3Ctext x='100' y='152' text-anchor='middle' font-size='12' fill='white' font-family='Arial'%3ESpecialist%3C/text%3E%3Ctext x='100' y='172' text-anchor='middle' font-size='13' fill='white' font-family='Arial'%3ESPM%3C/text%3E%3C/svg%3E" alt="CIS SPM Badge" class="cert-badge-img">
+        <h3>CIS — Strategic Portfolio Management</h3>
+        <p>Strategic Portfolio Management</p>
+      </div>
+
+      <div class="cert-card">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 230'%3E%3Cdefs%3E%3ClinearGradient id='g11' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2393dc5c'/%3E%3Cstop offset='1' stop-color='%2300d9cc'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M100 10 L190 60 L190 170 L100 220 L10 170 L10 60 Z' fill='url(%23g11)'/%3E%3Cpath d='M100 25 L175 65 L175 165 L100 205 L25 165 L25 65 Z' fill='%23003d4f'/%3E%3Ctext x='100' y='75' text-anchor='middle' font-size='12' fill='white' font-family='Arial'%3EserviceNow.%3C/text%3E%3Ctext x='100' y='120' text-anchor='middle' font-size='15' fill='white' font-weight='bold' font-family='Arial'%3EAccredited%3C/text%3E%3Ctext x='100' y='145' text-anchor='middle' font-size='12' fill='black' font-family='Arial'%3ENow Assist%3C/text%3E%3Ctext x='100' y='165' text-anchor='middle' font-size='12' fill='black' font-family='Arial'%3ECreator%3C/text%3E%3C/svg%3E" alt="Now Assist Creator Badge" class="cert-badge-img">
+        <h3>Accredited Now Assist Creator</h3>
+        <p>AI-powered workflow automation</p>
+      </div>
+
+      <div class="cert-card">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 230'%3E%3Cdefs%3E%3ClinearGradient id='g12' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2393dc5c'/%3E%3Cstop offset='1' stop-color='%2300d9cc'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M100 10 L190 60 L190 170 L100 220 L10 170 L10 60 Z' fill='url(%23g12)'/%3E%3Cpath d='M100 25 L175 65 L175 165 L100 205 L25 165 L25 65 Z' fill='%23003d4f'/%3E%3Ctext x='100' y='75' text-anchor='middle' font-size='12' fill='white' font-family='Arial'%3EserviceNow.%3C/text%3E%3Ctext x='100' y='120' text-anchor='middle' font-size='15' fill='white' font-weight='bold' font-family='Arial'%3EAccredited%3C/text%3E%3Ctext x='100' y='145' text-anchor='middle' font-size='12' fill='black' font-family='Arial'%3ENow Assist%3C/text%3E%3Ctext x='100' y='165' text-anchor='middle' font-size='12' fill='black' font-family='Arial'%3EITSM%3C/text%3E%3C/svg%3E" alt="Now Assist ITSM Badge" class="cert-badge-img">
+        <h3>Accredited Now Assist ITSM</h3>
+        <p>AI for IT Service Management</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="contact-content">
+      <p class="section-title">Let's Connect</p>
+      <h2>Get In Touch</h2>
+      <p>
+        I'm currently available for select consulting opportunities and always happy to discuss ServiceNow architecture, ITOM strategies, or platform optimization initiatives.
+      </p>
+      <a href="mailto:abhinavjoshi@ymail.com" class="btn btn-primary">Send Email</a>
+      
+      <div class="contact-links">
+        <a href="https://github.com/yourusername" target="_blank" aria-label="GitHub">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
           </svg>
         </a>
-
-        <a href="https://www.linkedin.com/in/joshiabhinav/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <a href="https://linkedin.com/in/yourprofile" target="_blank" aria-label="LinkedIn">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
             <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
           </svg>
         </a>
-        
-        <a href="mailto:abhinavjoshi@ymail.com" aria-label="Email">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-            <polyline points="22,6 12,13 2,6"></polyline>
-          </svg>
-        </a>
       </div>
-    </aside>
+    </div>
+  </section>
 
-    <main class="right-side">
-
-      <section id="about">
-        <h2>About</h2>
-        <p class="about-text">
-          I’m a ServiceNow architect and hands-on developer with <strong>9+ years</strong> delivering enterprise solutions across
-          <strong>ITOM, ITSM, ITAM, CSM</strong>, and <strong>CMDB/CSDM</strong>. I’ve led workshops, written SOW-aligned deliverables,
-          and built scalable platform patterns that improve data trust and operational performance.
-        </p>
-        <p class="about-text">
-          My technical strengths include <strong>ServiceNow ITOM</strong> (Discovery, Event Management, Service Mapping),
-          CMDB optimization, integrations (REST), and web technologies (JavaScript, JSON/XML, HTML/CSS). I enjoy turning messy
-          enterprise realities into clean operating models and automation.
-        </p>
-        <p class="about-text">
-          Recently, I’ve been expanding AI-enabled operations (summarization, knowledge generation, and workflow automation) with
-          strong governance and measurable outcomes.
-        </p>
-      </section>
-
-      <section id="certifications">
-        <h2>Certifications</h2>
-
-        <div class="cert-grid" role="list" aria-label="ServiceNow certifications list">
-          <div class="cert-card" role="listitem">
-            <svg width="40" height="40" viewBox="0 0 64 64" aria-hidden="true">
-              <rect x="6" y="6" width="52" height="52" rx="14" fill="rgba(100,255,218,0.10)"></rect>
-              <path d="M26.5 32l4.2 4.2L41 24.5" fill="none" stroke="#64ffda" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg>
-            <div>
-              <strong>Certified Technical Architect (CTA)</strong><br />
-              <span>ServiceNow</span>
-            </div>
-          </div>
-
-          <div class="cert-card" role="listitem">
-            <svg width="40" height="40" viewBox="0 0 64 64" aria-hidden="true">
-              <rect x="6" y="6" width="52" height="52" rx="14" fill="rgba(100,255,218,0.10)"></rect>
-              <path d="M26.5 32l4.2 4.2L41 24.5" fill="none" stroke="#64ffda" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg>
-            <div>
-              <strong>CSA • CAD</strong><br />
-              <span>System Administrator • App Developer</span>
-            </div>
-          </div>
-
-          <div class="cert-card" role="listitem">
-            <svg width="40" height="40" viewBox="0 0 64 64" aria-hidden="true">
-              <rect x="6" y="6" width="52" height="52" rx="14" fill="rgba(100,255,218,0.10)"></rect>
-              <path d="M26.5 32l4.2 4.2L41 24.5" fill="none" stroke="#64ffda" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg>
-            <div>
-              <strong>CIS — Discovery</strong><br />
-              <span>ITOM Discovery</span>
-            </div>
-          </div>
-
-          <div class="cert-card" role="listitem">
-            <svg width="40" height="40" viewBox="0 0 64 64" aria-hidden="true">
-              <rect x="6" y="6" width="52" height="52" rx="14" fill="rgba(100,255,218,0.10)"></rect>
-              <path d="M26.5 32l4.2 4.2L41 24.5" fill="none" stroke="#64ffda" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg>
-            <div>
-              <strong>CIS — ITSM • CSM • HAM</strong><br />
-              <span>IT Service Mgmt • Customer Service Mgmt • Hardware Asset Mgmt</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="experience">
-        <h2>Experience</h2>
-
-        <div class="experience-item">
-          <div class="date">Jan 2025 — Present</div>
-          <div class="content">
-            <h3>Principal Technical Consultant · AHEAD Inc.</h3>
-            <p class="company">Austin, Texas</p>
-            <p class="description">
-              Lead large-scale consulting engagements across ITOM/ITAM/ITSM, delivering enterprise architecture, governance, and high-impact outcomes.
-            </p>
-            <ul class="bullet-list">
-              <li>Led a team of 4+ technical consultants across ITOM, ITAM, and ITSM engagements with consistent on-time delivery.</li>
-              <li>Served as a trusted advisor to senior stakeholders; developed high-impact recommendations, presentations, and reports.</li>
-              <li>Drove organizational change management for large transformational programs and supported business development activities.</li>
-              <li>Maintained <strong>4.5+ CSAT</strong> across project engagements.</li>
-            </ul>
-            <div class="tags">
-              <span class="tag">ServiceNow</span>
-              <span class="tag">ITOM</span>
-              <span class="tag">ITAM</span>
-              <span class="tag">ITSM</span>
-              <span class="tag">Platform Governance</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="experience-item">
-          <div class="date">Sep 2021 — Dec 2024</div>
-          <div class="content">
-            <h3>Senior Technical Consultant · AHEAD Inc.</h3>
-            <p class="company">Austin, Texas</p>
-            <p class="description">
-              Led design, development, and testing; ran workshops; produced written deliverables and SOW-aligned estimates.
-            </p>
-            <ul class="bullet-list">
-              <li>Delivered CMDB optimization, Discovery, Event Management, Service Mapping, ITSM, CSM, and ITAM engagements.</li>
-              <li>Reduced data redundancy by <strong>20%</strong> and improved incident resolution time by <strong>15%</strong> through ITOM + process improvements.</li>
-              <li>Partnered in pre-sales by crafting tailored solutions and supporting subscription-based estimates.</li>
-            </ul>
-            <div class="tags">
-              <span class="tag">CMDB</span>
-              <span class="tag">CSDM</span>
-              <span class="tag">Discovery</span>
-              <span class="tag">Event Management</span>
-              <span class="tag">Service Mapping</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="experience-item">
-          <div class="date">May 2019 — Sep 2021</div>
-          <div class="content">
-            <h3>Senior Technical Consultant · Engage ESM</h3>
-            <p class="company">Dallas, Texas</p>
-            <p class="description">
-              Built and customized ServiceNow applications, integrations, and self-service experiences across ITSM and enterprise workflows.
-            </p>
-            <ul class="bullet-list">
-              <li>Designed bi-directional integrations with <strong>Remedy, JIRA, Zendesk, and LMIS</strong>.</li>
-              <li>Built custom Discovery design patterns and extensive platform automation (BRs, Script Includes, UI Actions, Workflows).</li>
-              <li>Delivered mobile-friendly self-service portal frameworks and supported Design Partner Program initiatives.</li>
-            </ul>
-            <div class="tags">
-              <span class="tag">Integrations</span>
-              <span class="tag">Scripting</span>
-              <span class="tag">Portal</span>
-              <span class="tag">Discovery Patterns</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="experience-item">
-          <div class="date">Jul 2016 — May 2019</div>
-          <div class="content">
-            <h3>Application Developer · Atos IT Solution & Services</h3>
-            <p class="company">Dallas, Texas</p>
-            <p class="description">
-              Built a production-grade Unified Hybrid Cloud portal (CMP 2.0) using ServiceNow as the UI layer across public and private cloud platforms.
-            </p>
-            <ul class="bullet-list">
-              <li>Integrated AWS, Azure, Google, Virtustream, and VMware vCloud; built automation for clean-up of expired/unutilized cloud resources.</li>
-              <li>Created metering/health tracking using UI pages, events, scheduled scripts, and REST APIs.</li>
-              <li>Developed Alexa + ServiceNow integration via AWS Lambda; built Cortana bot skills for portal details and asset provisioning.</li>
-            </ul>
-            <div class="tags">
-              <span class="tag">AWS</span>
-              <span class="tag">Azure</span>
-              <span class="tag">Google Cloud</span>
-              <span class="tag">Kubernetes</span>
-              <span class="tag">Automation</span>
-            </div>
-          </div>
-        </div>
-
-      <section id="skills">
-        <h2>Skills</h2>
-
-        <div class="project-item">
-          <div class="date">ServiceNow</div>
-          <div class="content">
-            <h3>Platform + Modules</h3>
-            <p class="description">
-              ITSM, CSM, ITOM (Event Management, Discovery, Service Mapping), HAM, SAM, CMDB, CSDM, SPM, HR, UI Builder, Custom App Development, Integrations.
-            </p>
-            <div class="tags">
-              <span class="tag">ITSM</span>
-              <span class="tag">ITOM</span>
-              <span class="tag">CMDB</span>
-              <span class="tag">CSDM</span>
-              <span class="tag">UI Builder</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-item">
-          <div class="date">Tech</div>
-          <div class="content">
-            <h3>Engineering</h3>
-            <p class="description">
-              JavaScript, jQuery, XML, JSON, RESTful web services, HTML/CSS, Glide scripting, shell scripting, ITIL practices.
-            </p>
-            <div class="tags">
-              <span class="tag">JavaScript</span>
-              <span class="tag">REST</span>
-              <span class="tag">JSON/XML</span>
-              <span class="tag">Glide</span>
-              <span class="tag">ITIL</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-item">
-          <div class="date">Cloud</div>
-          <div class="content">
-            <h3>Cloud Platforms</h3>
-            <p class="description">
-              Amazon Web Services, Google Cloud, Microsoft Azure.
-            </p>
-            <div class="tags">
-              <span class="tag">AWS</span>
-              <span class="tag">Azure</span>
-              <span class="tag">GCP</span>
-              <span class="tag">Hybrid Cloud</span>
-            </div>
-          </div>
-        </div>
-
-      </section>
-
-      <footer>
-        <p>Designed & Built by Abhinav Joshi</p>
-      </footer>
-    </main>
-  </div>
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Abhinav Joshi. Built with passion for ServiceNow excellence.</p>
+  </footer>
 
   <script>
-    document.addEventListener('mousemove', (e) => {
-      const spotlight = document.querySelector('.spotlight');
-      spotlight.style.setProperty('--mouse-x', `${e.clientX}px`);
-      spotlight.style.setProperty('--mouse-y', `${e.clientY}px`);
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
     });
 
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('.nav-link');
-
-    function updateActiveNav() {
-      let current = '';
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        if (window.scrollY >= (sectionTop - 200)) {
-          current = section.getAttribute('id');
-        }
-      });
-
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href').slice(1) === current) {
-          link.classList.add('active');
-        }
-      });
-    }
-
-    window.addEventListener('scroll', updateActiveNav);
-    updateActiveNav();
-
-    navLinks.forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const targetId = link.getAttribute('href');
-        const targetSection = document.querySelector(targetId);
-        targetSection.scrollIntoView({ behavior: 'smooth' });
-      });
+    // Add scroll effect to header
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+      const header = document.querySelector('header');
+      
+      if (currentScroll > 100) {
+        header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.3)';
+      } else {
+        header.style.boxShadow = 'none';
+      }
+      
+      lastScroll = currentScroll;
     });
   </script>
 </body>
